@@ -102,8 +102,6 @@ The project evaluates the performance of **Chord vs Pastry** by measuring the ex
 - Key deletions
 - Node joins & departures
 
-Results indicate that **Chord generally performs better** in terms of lookup efficiency for this specific dataset.
-
 ## Project Report
 
 A detailed **analysis and evaluation** of this project is available in the `report.pdf` file, covering:
