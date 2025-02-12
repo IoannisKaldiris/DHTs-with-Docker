@@ -35,6 +35,7 @@ The project follows the objectives outlined in the **Decentralized Data Engineer
 │── docker-compose.yml     # Docker configuration for multi-node deployment
 │── Dockerfile             # Image setup for running nodes in containers
 │── coffee_analysis.csv    # Dataset used for experimental evaluation
+│── Commands_docker        # List of important Docker commands
 │── report.pdf             # Detailed analysis of the project and findings
 ```
 
