@@ -44,16 +44,43 @@ The project follows the objectives outlined in the **Decentralized Data Engineer
 
 To deploy the Chord and Pastry DHTs using Docker, follow these steps:
 
-1. **Build the Docker image:**
+1. **Clean up previous Docker instances (if any):**
    ```sh
-   docker-compose build
+   docker system prune -a   # Delete all containers, networks, and images
    ```
-2. **Start the distributed network:**
+2. **Create the required network:**
    ```sh
-   docker-compose up
+   docker network create chord_network  # Create a new network
    ```
-3. The system will launch multiple Chord & Pastry nodes in separate containers.
-4. Check logs for performance metrics and node interactions.
+3. **Build and run the Docker containers:**
+   ```sh
+   docker-compose up --build
+   ```
+4. The system will launch multiple Chord & Pastry nodes in separate containers.
+5. Check logs for performance metrics and node interactions.
+
+### Dockerfile Configuration
+
+The `Dockerfile` contains the following commands:
+```Dockerfile
+# Use the latest Python version 
+FROM python:3.9
+
+# Definition of the working directory in the container
+WORKDIR /app
+
+# Copy the files to the container
+COPY . /app
+
+# Install required libraries
+RUN pip install pandas
+
+# Opening of ports for communication between nodes
+EXPOSE 5300-5310
+
+# Script execution
+CMD ["python", "pastry.py"]
+```
 
 ### 2️⃣ Running Locally (Without Docker)
 
@@ -82,15 +109,7 @@ Results indicate that **Chord generally performs better** in terms of lookup eff
 A detailed **analysis and evaluation** of this project is available in the `report.pdf` file, covering:
 
 - Performance comparison between Chord & Pastry
-- Graphical analysis of time complexity
 - Discussion on scalability & fault tolerance
 - Experimental findings on lookup, deletion, and insertion speeds
 - Evaluation of distributed network efficiency using Docker
-
-## Future Improvements
-
-- **Kubernetes integration** for dynamic scaling
-- **Additional optimizations** in routing efficiency
-- **Enhanced fault tolerance** by implementing replication mechanisms
-
 
