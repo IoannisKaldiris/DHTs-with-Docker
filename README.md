@@ -78,7 +78,7 @@ RUN pip install pandas
 # Opening of ports for communication between nodes
 EXPOSE 5300-5310
 
-# Script execution
+# Script execution chord/pastry.py
 CMD ["python", "pastry.py"]
 ```
 
